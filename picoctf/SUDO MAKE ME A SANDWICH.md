@@ -1,6 +1,6 @@
 # Privilege Escalation via Sudo Misconfiguration (Emacs)
 
-> **Platform:** Other  
+
 > **Category:** Privilege Escalation  
 > **Difficulty:** Easy  
 > **Solved:** Yes ✅
