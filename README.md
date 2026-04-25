@@ -8,9 +8,8 @@
 
 I'm a cybersecurity enthusiast who actively participates in CTF competitions to sharpen my skills in offensive and defensive security. These writeups reflect my hands-on experience with real-world attack techniques and security concepts.
 
-📫 **Contact:** [your@email.com](mailto:your@email.com)  
-🔗 **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
-🌐 **Portfolio:** [yourwebsite.com](https://yourwebsite.com)
+📫 **Contact:** [imaneakouttif@email.com](mailto:imaneakouttif@email.com)  
+🔗 **LinkedIn:** [www.linkedin.com/in/imane-a-7280421aa](https://www.linkedin.com/in/imane-a-7280421aa)  
 
 ---
 
@@ -35,13 +34,13 @@ I'm a cybersecurity enthusiast who actively participates in CTF competitions to 
 
 | Event | Category | Challenge | Difficulty | Flag |
 |---|---|---|---|---|
-| [Example CTF](./2025/example-ctf/) | Web | [Sample Challenge](./2025/example-ctf/web-sample-challenge.md) | Medium | ✅ |
+| |  | [Sample Challenge](./2025/example-ctf/web-sample-challenge.md) | Medium | ✅ |
 
 ---
 
 ## 📊 Stats
 
-- 🏆 **Total Challenges Solved:** 1 *(update as you go)*
+- 🏆 **Total Challenges Solved:** 1 **
 - 🗓️ **CTFs Participated In:** 1
 - 🥇 **Best Placement:** *add your rank here*
 
