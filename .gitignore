@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Challenge files (binaries, zips — too large for git)
+*.exe
+*.bin
+*.zip
+*.tar.gz
+
+# Notes you don't want public
+private/
+notes/
